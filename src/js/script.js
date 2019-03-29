@@ -5,10 +5,11 @@ window.addEventListener('DOMContentLoaded', () => {
     'use strict';
     let mainSlider = require('./parts/main-slider.js');
     let bottomSlider = require('./parts/bottom-slider.js');
+    let pictureHover = require('./parts/picture-hover.js');
 
     mainSlider();
     bottomSlider();
-
+    pictureHover();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
