@@ -88,7 +88,7 @@
 
 /***/ "../../node_modules/formdata-polyfill/formdata.min.js":
 /*!**********************************************************************************************!*\
-  !*** C:/Users/user/Desktop/diplom/diploma-js/node_modules/formdata-polyfill/formdata.min.js ***!
+  !*** C:/Users/User/Desktop/diplom/diploma-js/node_modules/formdata-polyfill/formdata.min.js ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -242,6 +242,7 @@ module.exports = mainSlider;
 function pictureHover() {
   console.log('Подключен модуль pictureHover');
   var pictWrapper = document.querySelector('.sizes-wrapper');
+  var picSection = document.querySelector('.sizes');
   var pictHover = document.querySelectorAll('.sizes-block');
 
   if (browser()) {
@@ -253,14 +254,21 @@ function pictureHover() {
         elem.querySelector('.back-side').style.opacity = '0';
       });
     });
-  } else {} // obj.addEventListener('touchstart', function(event) {
-  // event.preventDefault();
-  // event.stopPropagation();
-  //     if (event.targetTouches.length == 1) {
-  //     var myclick=event.targetTouches[0]; /*Ваш код*/
-  //     }
-  //     }, false);
-  // Определение мобильного браузера
+  } else {
+    picSection.addEventListener('touchstart', function (e) {
+      // e.preventDefault();
+      // e.stopPropagation();
+      var target = e.target;
+
+      if (target.classList.contains('back-side')) {
+        target.style.opacity = '1';
+      } else {
+        pictHover.forEach(function (elem) {
+          elem.querySelector('.back-side').style.opacity = '0';
+        });
+      }
+    }, false);
+  } // Определение мобильного браузера
 
 
   function browser() {

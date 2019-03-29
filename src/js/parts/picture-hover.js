@@ -2,6 +2,7 @@ function pictureHover(){
     console.log('Подключен модуль pictureHover');
     
     let pictWrapper= document.querySelector('.sizes-wrapper');
+    let picSection = document.querySelector('.sizes');
     let pictHover = document.querySelectorAll('.sizes-block');
 
     if (browser()) {
@@ -14,15 +15,20 @@ function pictureHover(){
             });
         });
     } else {
-        // obj.addEventListener('touchstart', function(event) {
-            // event.preventDefault();
-            // event.stopPropagation();
-        //     if (event.targetTouches.length == 1) {
-        //     var myclick=event.targetTouches[0]; /*Ваш код*/
-        //     }
-        //     }, false);
-            
+        picSection.addEventListener('touchstart', function(e) {
+            // e.preventDefault();
+            // e.stopPropagation();
+            const target = e.target;
+            if (target.classList.contains('back-side')) {
+                target.style.opacity = '1';
+            } else {
+                pictHover.forEach(function(elem){
+                    elem.querySelector('.back-side').style.opacity = '0';
+                });
+            }
+        }, false);
     }
+
 
 
     // Определение мобильного браузера
