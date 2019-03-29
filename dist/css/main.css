@@ -884,6 +884,7 @@ h4 {
 .often-questions {
   position: relative;
   padding: 10rem 0 8rem 0;
+  overflow: hidden;
 }
 .often-questions h2 {
   margin-bottom: 10rem;
@@ -896,15 +897,22 @@ h4 {
   font-size: 2.2rem;
   cursor: pointer;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 .often-questions .accordion-heading span {
   border-bottom: 2px dotted #333;
 }
 .often-questions .accordion-block {
-  margin-top: 6rem;
+  /* margin-top: 4rem;
+  margin-bottom: 4rem; */
   background-color: #f7e7e6;
   padding: 3rem 4rem;
+  opacity: 1;
+  /* overflow: hidden; */
+  /* height: auto; */
+  /* transform: scaleY(1);*/
+  transition: .5s;
 }
 .often-questions .accordion-block:before {
   content: '';
@@ -918,7 +926,7 @@ h4 {
 .often-questions .ui-accordion-header-active {
   cursor: auto;
   color: #c51abb;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
 }
 .often-questions .ui-accordion-header-active span {
   border-bottom: none;
@@ -932,9 +940,16 @@ h4 {
   right: 5%;
 }
 .often-questions .spirt {
-  position: absolute;
+  /* position: absolute;
   top: -25rem;
-  left: 0;
+  left: 0; */
+  /* margin-top: 0;
+  margin-bottom: 0; */
+  background-color: transparent;
+  padding: 0 4rem;
+  opacity: 0;
+  /* padding: 0; */
+  height: 0 !important;
 }
 .promo-3 {
   background-color: #f7e7e6;
@@ -1848,4 +1863,7 @@ h4 {
   left: 0;
   right: 0;
   transition: .2s;
+}
+.active-item{
+  color: #c51abb;
 }

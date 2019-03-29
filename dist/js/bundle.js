@@ -146,6 +146,41 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./parts/accordion.js":
+/*!****************************!*\
+  !*** ./parts/accordion.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function accordion() {
+  console.log('Подключен модуль accordion');
+  var accord = document.querySelector('#accordion');
+  var accordHeads = document.querySelectorAll('.accordion-heading');
+  var accordBlocks = document.querySelectorAll('.accordion-block');
+  console.log(accord);
+  accordBlocks.forEach(function (elem) {
+    elem.classList.add('spirt');
+  });
+  accordHeads.forEach(function (elem) {
+    elem.addEventListener('click', function (e) {
+      accordHeads.forEach(function (elHead) {
+        if (elem != elHead) {
+          elHead.classList.remove('ui-accordion-header-active');
+          elHead.nextElementSibling.classList.add('spirt');
+        } else {
+          elHead.classList.toggle('ui-accordion-header-active');
+          elHead.nextElementSibling.classList.toggle('spirt');
+        }
+      });
+    });
+  });
+}
+
+module.exports = accordion;
+
+/***/ }),
+
 /***/ "./parts/bottom-slider.js":
 /*!********************************!*\
   !*** ./parts/bottom-slider.js ***!
@@ -322,9 +357,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var pictureHover = __webpack_require__(/*! ./parts/picture-hover.js */ "./parts/picture-hover.js");
 
+  var accordion = __webpack_require__(/*! ./parts/accordion.js */ "./parts/accordion.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
+  accordion();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

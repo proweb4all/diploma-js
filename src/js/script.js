@@ -6,10 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
     let mainSlider = require('./parts/main-slider.js');
     let bottomSlider = require('./parts/bottom-slider.js');
     let pictureHover = require('./parts/picture-hover.js');
+    let accordion = require('./parts/accordion.js');
 
     mainSlider();
     bottomSlider();
     pictureHover();
+    accordion();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
