@@ -1724,3 +1724,42 @@ h4 {
     width: 25rem;
   }
 }
+
+
+/* ================= */
+
+.main-slider{
+  overflow: hidden;
+}
+.down {
+  -webkit-animation-name: down;
+          animation-name: down;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-name: down;
+  -webkit-animation-duration: 1.5s;
+}
+@-webkit-keyframes down{
+  from {
+    /* top: -670px; */
+    transform: translateY(-100%);
+    opacity: 0.1;
+  }
+  to {
+    /* top: 0; */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes down {
+  from {
+    /* top: -670px; */
+    transform: translateY(-100%);
+    opacity: 0.1;
+  }
+  to {
+    /* top: 0; */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
