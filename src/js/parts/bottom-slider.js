@@ -5,6 +5,7 @@ function bottomSlider(){
         slides = document.querySelectorAll('.feedback-slider-item'),
         prev = document.querySelector('.main-prev-btn'),
         next = document.querySelector('.main-next-btn');
+        let timerId = setInterval(() => {plusSlides(1)}, 7000);
     //showSlides(slideIndex, 0);
     function showSlides(n, d){
         if (n > slides.length) slideIndex = 1;
@@ -21,9 +22,19 @@ function bottomSlider(){
         }
     }
     function plusSlides(n) {showSlides(slideIndex += n, n)}
-    prev.addEventListener('click', () => plusSlides(-1));
-    next.addEventListener('click', () => plusSlides(1));
-    setInterval(() => {plusSlides(1)}, 7000);
+    prev.addEventListener('click', () => {
+        clearInterval(timerId);
+        plusSlides(-1);
+        autoPlay();
+    });
+    next.addEventListener('click', () => {
+        clearInterval(timerId);
+        plusSlides(1);
+        autoPlay();
+    });
+    function autoPlay () {
+        timerId = setInterval(() => {plusSlides(1)}, 7000);
+    }
 
 }
 

@@ -158,7 +158,6 @@ function accordion() {
   var accord = document.querySelector('#accordion');
   var accordHeads = document.querySelectorAll('.accordion-heading');
   var accordBlocks = document.querySelectorAll('.accordion-block');
-  console.log(accord);
   accordBlocks.forEach(function (elem) {
     elem.classList.add('spirt');
   });
@@ -193,7 +192,10 @@ function bottomSlider() {
   var slideIndex = 1,
       slides = document.querySelectorAll('.feedback-slider-item'),
       prev = document.querySelector('.main-prev-btn'),
-      next = document.querySelector('.main-next-btn'); //showSlides(slideIndex, 0);
+      next = document.querySelector('.main-next-btn');
+  var timerId = setInterval(function () {
+    plusSlides(1);
+  }, 7000); //showSlides(slideIndex, 0);
 
   function showSlides(n, d) {
     if (n > slides.length) slideIndex = 1;
@@ -216,14 +218,21 @@ function bottomSlider() {
   }
 
   prev.addEventListener('click', function () {
-    return plusSlides(-1);
+    clearInterval(timerId);
+    plusSlides(-1);
+    autoPlay();
   });
   next.addEventListener('click', function () {
-    return plusSlides(1);
-  });
-  setInterval(function () {
+    clearInterval(timerId);
     plusSlides(1);
-  }, 7000);
+    autoPlay();
+  });
+
+  function autoPlay() {
+    timerId = setInterval(function () {
+      plusSlides(1);
+    }, 7000);
+  }
 }
 
 module.exports = bottomSlider;

@@ -5,7 +5,6 @@ function accordion(){
     let accordHeads = document.querySelectorAll('.accordion-heading');
     let accordBlocks = document.querySelectorAll('.accordion-block');
 
-    console.log(accord);
     accordBlocks.forEach(function(elem){
         elem.classList.add('spirt');
     });
