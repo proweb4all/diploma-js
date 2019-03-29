@@ -1734,32 +1734,108 @@ h4 {
 .down {
   -webkit-animation-name: down;
           animation-name: down;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  -webkit-animation-duration: 1.0s;
+          animation-duration: 1.0s;
   -webkit-animation-name: down;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.0s;
 }
 @-webkit-keyframes down{
   from {
-    /* top: -670px; */
     transform: translateY(-100%);
     opacity: 0.1;
   }
   to {
-    /* top: 0; */
     transform: translateY(0);
     opacity: 1;
   }
 }
 @keyframes down {
   from {
-    /* top: -670px; */
     transform: translateY(-100%);
     opacity: 0.1;
   }
   to {
-    /* top: 0; */
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+.fade-slide {
+  -webkit-animation-name: fade-slide;
+          animation-name: fade-slide;
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
+  -webkit-animation-name: fade-slide;
+  -webkit-animation-duration: 2.5s;
+}
+@-webkit-keyframes fade-slide {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-slide {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.slide-to-right {
+  -webkit-animation-name: slide-to-right;
+          animation-name: slide-to-right;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
+  -webkit-animation-name: slide-to-right;
+  -webkit-animation-duration: .6s;
+}
+@-webkit-keyframes slide-to-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-to-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-to-left {
+  -webkit-animation-name: slide-to-left;
+          animation-name: slider-to-left;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
+  -webkit-animation-name: slider-to-left;
+  -webkit-animation-duration: .6s;
+}
+@-webkit-keyframes slider-to-left {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slider-to-left {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
 }

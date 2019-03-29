@@ -4,8 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
     let mainSlider = require('./parts/main-slider.js');
+    let bottomSlider = require('./parts/bottom-slider.js');
 
     mainSlider();
+    bottomSlider();
 
 });
 
