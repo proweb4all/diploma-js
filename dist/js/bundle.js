@@ -589,6 +589,8 @@ function popupGift() {
   console.log('Подключен модуль popupGift');
   var buttonGift = document.querySelector('.fixed-gift');
   var popGift = document.querySelector('.popup-gift');
+  var buttons = document.querySelectorAll('button');
+  var countClicks = 0;
   buttonGift.addEventListener('click', function () {
     popGift.style.display = 'block';
     buttonGift.style.display = 'none';
@@ -598,6 +600,20 @@ function popupGift() {
 
     if (target.classList.contains('popup-gift') || target.classList.contains('popup-close')) {
       popGift.style.display = 'none';
+    }
+  });
+  buttons.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      countClicks++;
+    });
+  });
+  window.addEventListener('scroll', function () {
+    var elem = document.querySelector('html');
+
+    if (elem.scrollHeight - elem.scrollTop == elem.clientHeight && countClicks == 0) {
+      console.log('Прокручено до конца', countClicks);
+      popGift.style.display = 'block';
+      buttonGift.style.display = 'none';
     }
   });
 }
