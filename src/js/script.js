@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let burger = require('./parts/burger.js');
     let addStyles = require('./parts/add-styles.js');
     let filtration = require('./parts/filtration.js');
+    let popupDesign = require('./parts/popup-design.js');
     
     mainSlider();
     bottomSlider();
@@ -20,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     burger();
     addStyles();
     filtration();
+    popupDesign();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

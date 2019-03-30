@@ -511,6 +511,35 @@ module.exports = pictureHover;
 
 /***/ }),
 
+/***/ "./parts/popup-design.js":
+/*!*******************************!*\
+  !*** ./parts/popup-design.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function popupDesign() {
+  console.log('Подключен модуль popupDesign');
+  var buttonDesign = document.querySelectorAll('.button-design');
+  var popDesign = document.querySelector('.popup-design');
+  buttonDesign.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      popDesign.style.display = 'block';
+    });
+  });
+  popDesign.addEventListener('click', function (e) {
+    var target = e.target;
+
+    if (target.classList.contains('popup-design') || target.classList.contains('popup-close')) {
+      popDesign.style.display = 'none';
+    }
+  });
+}
+
+module.exports = popupDesign;
+
+/***/ }),
+
 /***/ "./script.js":
 /*!*******************!*\
   !*** ./script.js ***!
@@ -539,6 +568,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var filtration = __webpack_require__(/*! ./parts/filtration.js */ "./parts/filtration.js");
 
+  var popupDesign = __webpack_require__(/*! ./parts/popup-design.js */ "./parts/popup-design.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
@@ -547,6 +578,7 @@ window.addEventListener('DOMContentLoaded', function () {
   burger();
   addStyles();
   filtration();
+  popupDesign();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
