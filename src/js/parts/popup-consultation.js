@@ -15,6 +15,13 @@ function popupConsultation(){
             popConsultation.style.display = 'none';
         }
     });
+    setTimeout(() => {
+        console.log('Таймаут 60 секунд');
+        let arrPopup = document.querySelectorAll('.popup-design, .popup-gift, .popup-consultation');
+        let flag = true;
+        arrPopup.forEach((elem) => {if (elem.style.display == 'block') flag = false});
+        if (flag) popConsultation.style.display = 'block';
+    }, 60000);
 
 }
 

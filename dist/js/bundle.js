@@ -534,6 +534,15 @@ function popupConsultation() {
       popConsultation.style.display = 'none';
     }
   });
+  setTimeout(function () {
+    console.log('Таймаут 60 секунд');
+    var arrPopup = document.querySelectorAll('.popup-design, .popup-gift, .popup-consultation');
+    var flag = true;
+    arrPopup.forEach(function (elem) {
+      if (elem.style.display == 'block') flag = false;
+    });
+    if (flag) popConsultation.style.display = 'block';
+  }, 60000);
 }
 
 module.exports = popupConsultation;
