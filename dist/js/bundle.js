@@ -540,6 +540,34 @@ module.exports = popupDesign;
 
 /***/ }),
 
+/***/ "./parts/popup-gift.js":
+/*!*****************************!*\
+  !*** ./parts/popup-gift.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function popupGift() {
+  console.log('Подключен модуль popupGift');
+  var buttonGift = document.querySelector('.fixed-gift');
+  var popGift = document.querySelector('.popup-gift');
+  buttonGift.addEventListener('click', function () {
+    popGift.style.display = 'block';
+    buttonGift.style.display = 'none';
+  });
+  popGift.addEventListener('click', function (e) {
+    var target = e.target;
+
+    if (target.classList.contains('popup-gift') || target.classList.contains('popup-close')) {
+      popGift.style.display = 'none';
+    }
+  });
+}
+
+module.exports = popupGift;
+
+/***/ }),
+
 /***/ "./script.js":
 /*!*******************!*\
   !*** ./script.js ***!
@@ -570,6 +598,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var popupDesign = __webpack_require__(/*! ./parts/popup-design.js */ "./parts/popup-design.js");
 
+  var popupGift = __webpack_require__(/*! ./parts/popup-gift.js */ "./parts/popup-gift.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
@@ -579,6 +609,7 @@ window.addEventListener('DOMContentLoaded', function () {
   addStyles();
   filtration();
   popupDesign();
+  popupGift();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
