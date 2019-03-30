@@ -239,6 +239,35 @@ module.exports = bottomSlider;
 
 /***/ }),
 
+/***/ "./parts/burger.js":
+/*!*************************!*\
+  !*** ./parts/burger.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function burger() {
+  console.log('Подключен модуль burger');
+  var burger = document.querySelector('.burger'),
+      burgerMenu = document.querySelector('.burger-menu');
+  burger.addEventListener('click', function () {
+    if (window.screen.width <= 768) {
+      console.log('------>768');
+      burgerMenu.classList.toggle('display-block');
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (window.screen.width > 768) {
+      console.log('>768');
+      burgerMenu.classList.remove('display-block');
+    }
+  });
+}
+
+module.exports = burger;
+
+/***/ }),
+
 /***/ "./parts/calc.js":
 /*!***********************!*\
   !*** ./parts/calc.js ***!
@@ -435,11 +464,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var calc = __webpack_require__(/*! ./parts/calc.js */ "./parts/calc.js");
 
+  var burger = __webpack_require__(/*! ./parts/burger.js */ "./parts/burger.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
   accordion();
   calc();
+  burger();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

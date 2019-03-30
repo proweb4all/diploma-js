@@ -8,12 +8,14 @@ window.addEventListener('DOMContentLoaded', () => {
     let pictureHover = require('./parts/picture-hover.js');
     let accordion = require('./parts/accordion.js');
     let calc = require('./parts/calc.js');
+    let burger = require('./parts/burger.js');
 
     mainSlider();
     bottomSlider();
     pictureHover();
     accordion();
     calc();
+    burger();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

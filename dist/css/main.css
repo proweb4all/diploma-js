@@ -1742,7 +1742,9 @@ h4 {
 
 
 /* ================= */
-
+.display-block{
+  display: block !important;
+}
 .main-slider{
   overflow: hidden;
 }
