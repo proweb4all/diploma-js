@@ -355,6 +355,53 @@ module.exports = calc;
 
 /***/ }),
 
+/***/ "./parts/filtration.js":
+/*!*****************************!*\
+  !*** ./parts/filtration.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function filtration() {
+  console.log('Подключен модуль filtration');
+  var pfMenu = document.querySelector('.portfolio-menu');
+  var pfBlock = document.querySelectorAll('.portfolio-block');
+  var pfNo = document.querySelector('.portfolio-no');
+  pfMenu.addEventListener('click', function (e) {
+    var target = e.target;
+
+    if (target.tagName == 'LI') {
+      console.log(target.classList[0]);
+      var elemsMenu = pfMenu.querySelectorAll('li');
+      elemsMenu.forEach(function (elem) {
+        return elem.classList.remove('active');
+      });
+      target.classList.add('active');
+      var flag = true;
+      pfBlock.forEach(function (elem) {
+        if (elem.classList.contains(target.classList[0])) {
+          elem.style.display = 'block';
+          flag = false;
+        } else {
+          elem.style.display = 'none';
+        }
+      });
+
+      if (flag) {
+        pfNo.style.display = 'block';
+      } else {
+        pfNo.style.display = 'no';
+      }
+
+      ;
+    }
+  });
+}
+
+module.exports = filtration;
+
+/***/ }),
+
 /***/ "./parts/main-slider.js":
 /*!******************************!*\
   !*** ./parts/main-slider.js ***!
@@ -490,6 +537,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var addStyles = __webpack_require__(/*! ./parts/add-styles.js */ "./parts/add-styles.js");
 
+  var filtration = __webpack_require__(/*! ./parts/filtration.js */ "./parts/filtration.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
@@ -497,6 +546,7 @@ window.addEventListener('DOMContentLoaded', function () {
   calc();
   burger();
   addStyles();
+  filtration();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

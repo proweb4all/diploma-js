@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let calc = require('./parts/calc.js');
     let burger = require('./parts/burger.js');
     let addStyles = require('./parts/add-styles.js');
+    let filtration = require('./parts/filtration.js');
     
     mainSlider();
     bottomSlider();
@@ -18,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     calc();
     burger();
     addStyles();
+    filtration();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
