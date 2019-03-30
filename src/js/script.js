@@ -13,7 +13,9 @@ window.addEventListener('DOMContentLoaded', () => {
     let filtration = require('./parts/filtration.js');
     let popupDesign = require('./parts/popup-design.js');
     let popupGift = require('./parts/popup-gift.js');
+    let popupConsultation = require('./parts/popup-consultation.js');
     
+    popupConsultation
     mainSlider();
     bottomSlider();
     pictureHover();
@@ -24,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
     filtration();
     popupDesign();
     popupGift();
+    popupConsultation();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

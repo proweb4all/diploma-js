@@ -511,6 +511,35 @@ module.exports = pictureHover;
 
 /***/ }),
 
+/***/ "./parts/popup-consultation.js":
+/*!*************************************!*\
+  !*** ./parts/popup-consultation.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function popupConsultation() {
+  console.log('Подключен модуль popupConsultation');
+  var buttonConsultation = document.querySelectorAll('.button-consultation');
+  var popConsultation = document.querySelector('.popup-consultation');
+  buttonConsultation.forEach(function (elem) {
+    elem.addEventListener('click', function () {
+      popConsultation.style.display = 'block';
+    });
+  });
+  popConsultation.addEventListener('click', function (e) {
+    var target = e.target;
+
+    if (target.classList.contains('popup-consultation') || target.classList.contains('popup-close')) {
+      popConsultation.style.display = 'none';
+    }
+  });
+}
+
+module.exports = popupConsultation;
+
+/***/ }),
+
 /***/ "./parts/popup-design.js":
 /*!*******************************!*\
   !*** ./parts/popup-design.js ***!
@@ -600,6 +629,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var popupGift = __webpack_require__(/*! ./parts/popup-gift.js */ "./parts/popup-gift.js");
 
+  var popupConsultation = __webpack_require__(/*! ./parts/popup-consultation.js */ "./parts/popup-consultation.js");
+
+  popupConsultation;
   mainSlider();
   bottomSlider();
   pictureHover();
@@ -610,6 +642,7 @@ window.addEventListener('DOMContentLoaded', function () {
   filtration();
   popupDesign();
   popupGift();
+  popupConsultation();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
