@@ -7,11 +7,13 @@ window.addEventListener('DOMContentLoaded', () => {
     let bottomSlider = require('./parts/bottom-slider.js');
     let pictureHover = require('./parts/picture-hover.js');
     let accordion = require('./parts/accordion.js');
+    let calc = require('./parts/calc.js');
 
     mainSlider();
     bottomSlider();
     pictureHover();
     accordion();
+    calc();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
