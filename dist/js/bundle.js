@@ -180,6 +180,30 @@ module.exports = accordion;
 
 /***/ }),
 
+/***/ "./parts/add-styles.js":
+/*!*****************************!*\
+  !*** ./parts/add-styles.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function addStyles() {
+  console.log('Подключен модуль addStyles');
+  var buttonAS = document.querySelector('.styles .button-transparent'),
+      styles2 = document.querySelectorAll('.styles-2');
+  buttonAS.addEventListener('click', function () {
+    styles2.forEach(function (elem) {
+      elem.classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs', 'styles-2');
+      elem.classList.add('col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-10', 'col-xs-offset-1');
+    });
+    buttonAS.style.display = 'none';
+  });
+}
+
+module.exports = addStyles;
+
+/***/ }),
+
 /***/ "./parts/bottom-slider.js":
 /*!********************************!*\
   !*** ./parts/bottom-slider.js ***!
@@ -252,13 +276,11 @@ function burger() {
       burgerMenu = document.querySelector('.burger-menu');
   burger.addEventListener('click', function () {
     if (window.screen.width <= 768) {
-      console.log('------>768');
       burgerMenu.classList.toggle('display-block');
     }
   });
   window.addEventListener('resize', function () {
     if (window.screen.width > 768) {
-      console.log('>768');
       burgerMenu.classList.remove('display-block');
     }
   });
@@ -466,12 +488,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var burger = __webpack_require__(/*! ./parts/burger.js */ "./parts/burger.js");
 
+  var addStyles = __webpack_require__(/*! ./parts/add-styles.js */ "./parts/add-styles.js");
+
   mainSlider();
   bottomSlider();
   pictureHover();
   accordion();
   calc();
   burger();
+  addStyles();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {

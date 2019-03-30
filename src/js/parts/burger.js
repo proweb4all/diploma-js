@@ -6,13 +6,11 @@ function burger(){
 
     burger.addEventListener('click', () => {
         if (window.screen.width <= 768) {
-            console.log('------>768');
             burgerMenu.classList.toggle('display-block');
         }
     });
     window.addEventListener('resize', () => {
         if (window.screen.width > 768) {
-            console.log('>768');
             burgerMenu.classList.remove('display-block');
         }
     });
