@@ -12,7 +12,9 @@ function popupConsultation(){
     popConsultation.addEventListener('click', (e) => {
         const target = e.target;
         if (target.classList.contains('popup-consultation') || target.classList.contains('popup-close')) {
+            let statusPost = document.querySelector('.status-post');
             popConsultation.style.display = 'none';
+            statusPost.style.display = 'none';
         }
     });
     setTimeout(() => {

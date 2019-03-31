@@ -12,7 +12,9 @@ function popupDesign(){
     popDesign.addEventListener('click', (e) => {
         const target = e.target;
         if (target.classList.contains('popup-design') || target.classList.contains('popup-close')) {
+            let statusPost = document.querySelector('.status-post');
             popDesign.style.display = 'none';
+            statusPost.style.display = 'none';
         }
     });
 

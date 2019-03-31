@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let popupDesign = require('./parts/popup-design.js');
     let popupGift = require('./parts/popup-gift.js');
     let popupConsultation = require('./parts/popup-consultation.js');
+    let forms = require('./parts/forms.js');
     
     popupConsultation
     mainSlider();
@@ -27,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
     popupDesign();
     popupGift();
     popupConsultation();
+    forms();
 });
 
 if ('NodeList' in window && !NodeList.prototype.forEach) {
