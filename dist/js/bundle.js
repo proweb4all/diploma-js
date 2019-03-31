@@ -1871,7 +1871,7 @@ function forms() {
   } // Попап формы
 
 
-  var popupForms = document.querySelectorAll('#form-design, #form-consult');
+  var popupForms = document.querySelectorAll('#form-design, #form-consult, #form-bottom');
   console.log(popupForms);
   popupForms.forEach(function (elem) {
     sendForm(elem);

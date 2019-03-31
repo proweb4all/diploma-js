@@ -65,7 +65,7 @@ function forms(){
         });
     }
     // Попап формы
-    let popupForms = document.querySelectorAll('#form-design, #form-consult');
+    let popupForms = document.querySelectorAll('#form-design, #form-consult, #form-bottom');
     console.log(popupForms);
     popupForms.forEach((elem) => {sendForm(elem)})
     // Нижняя форма
