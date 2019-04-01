@@ -1,8 +1,7 @@
 function popupConsultation(){
-    console.log('Подключен модуль popupConsultation');
     
-    let buttonConsultation = document.querySelectorAll('.button-consultation');
-    let popConsultation = document.querySelector('.popup-consultation');
+    let buttonConsultation = document.querySelectorAll('.button-consultation'),
+        popConsultation = document.querySelector('.popup-consultation');
 
     buttonConsultation.forEach((elem) => {
         elem.addEventListener('click', () => {
@@ -14,11 +13,10 @@ function popupConsultation(){
         if (target.classList.contains('popup-consultation') || target.classList.contains('popup-close')) {
             let statusPost = document.querySelector('.status-post');
             popConsultation.style.display = 'none';
-            statusPost.style.display = 'none';
+            if (statusPost) {statusPost.style.display = 'none'}
         }
     });
     setTimeout(() => {
-        console.log('Таймаут 60 секунд');
         let arrPopup = document.querySelectorAll('.popup-design, .popup-gift, .popup-consultation');
         let flag = true;
         arrPopup.forEach((elem) => {if (elem.style.display == 'block') flag = false});

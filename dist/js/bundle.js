@@ -1543,15 +1543,13 @@ module.exports = g;
 /***/ (function(module, exports) {
 
 function accordion() {
-  console.log('Подключен модуль accordion');
-  var accord = document.querySelector('#accordion');
-  var accordHeads = document.querySelectorAll('.accordion-heading');
-  var accordBlocks = document.querySelectorAll('.accordion-block');
+  var accordHeads = document.querySelectorAll('.accordion-heading'),
+      accordBlocks = document.querySelectorAll('.accordion-block');
   accordBlocks.forEach(function (elem) {
     elem.classList.add('spirt');
   });
   accordHeads.forEach(function (elem) {
-    elem.addEventListener('click', function (e) {
+    elem.addEventListener('click', function () {
       accordHeads.forEach(function (elHead) {
         if (elem != elHead) {
           elHead.classList.remove('ui-accordion-header-active');
@@ -1577,7 +1575,6 @@ module.exports = accordion;
 /***/ (function(module, exports) {
 
 function addStyles() {
-  console.log('Подключен модуль addStyles');
   var buttonAS = document.querySelector('.styles .button-transparent'),
       styles2 = document.querySelectorAll('.styles-2');
   buttonAS.addEventListener('click', function () {
@@ -1601,14 +1598,13 @@ module.exports = addStyles;
 /***/ (function(module, exports) {
 
 function bottomSlider() {
-  console.log('Подключен модуль bottomSlider');
   var slideIndex = 1,
       slides = document.querySelectorAll('.feedback-slider-item'),
       prev = document.querySelector('.main-prev-btn'),
       next = document.querySelector('.main-next-btn');
   var timerId = setInterval(function () {
     plusSlides(1);
-  }, 7000); //showSlides(slideIndex, 0);
+  }, 7000);
 
   function showSlides(n, d) {
     if (n > slides.length) slideIndex = 1;
@@ -1660,7 +1656,6 @@ module.exports = bottomSlider;
 /***/ (function(module, exports) {
 
 function burger() {
-  console.log('Подключен модуль burger');
   var burger = document.querySelector('.burger'),
       burgerMenu = document.querySelector('.burger-menu');
   burger.addEventListener('click', function () {
@@ -1687,21 +1682,17 @@ module.exports = burger;
 /***/ (function(module, exports) {
 
 function calc() {
-  console.log('Подключен модуль calc');
   var inputCalc = document.querySelectorAll('.form select, .promocode'),
       inputPromo = document.querySelector('.promocode'),
       totalValue = document.querySelector('.calc-price');
-  var totalDefault = totalValue.textContent;
-  var promoDiscount = .3;
-  var promoCode = 'IWANTPOPART';
+  var totalDefault = totalValue.textContent,
+      promoDiscount = .3,
+      promoCode = 'IWANTPOPART';
   inputCalc.forEach(function (elem) {
     elem.addEventListener('change', function () {
-      // console.log('inputCalc[0]', inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price'));
-      // console.log('inputCalc[1]', inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price'));
-      // console.log('inputCalc[2]', inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price'));
-      var price0 = +inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price');
-      var price1 = +inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price');
-      var price2 = +inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price');
+      var price0 = +inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price'),
+          price1 = +inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price'),
+          price2 = +inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price');
 
       if (price0 <= 0 || price1 <= 0) {
         totalValue.style.fontSize = '14px';
@@ -1714,10 +1705,8 @@ function calc() {
         }
 
         totalValue.style.fontSize = '40px';
-        animNum(totalValue, Math.round(res), 50, 1000); //totalValue.textContent = Math.round(res);
+        animNum(totalValue, Math.round(res), 50, 1000);
       }
-
-      ;
     });
   }); // Анимация числа
 
@@ -1752,15 +1741,13 @@ module.exports = calc;
 /***/ (function(module, exports) {
 
 function filtration() {
-  console.log('Подключен модуль filtration');
-  var pfMenu = document.querySelector('.portfolio-menu');
-  var pfBlock = document.querySelectorAll('.portfolio-block');
-  var pfNo = document.querySelector('.portfolio-no');
+  var pfMenu = document.querySelector('.portfolio-menu'),
+      pfBlock = document.querySelectorAll('.portfolio-block'),
+      pfNo = document.querySelector('.portfolio-no');
   pfMenu.addEventListener('click', function (e) {
     var target = e.target;
 
     if (target.tagName == 'LI') {
-      console.log(target.classList[0]);
       var elemsMenu = pfMenu.querySelectorAll('li');
       elemsMenu.forEach(function (elem) {
         return elem.classList.remove('active');
@@ -1781,8 +1768,6 @@ function filtration() {
       } else {
         pfNo.style.display = 'no';
       }
-
-      ;
     }
   });
 }
@@ -1801,16 +1786,13 @@ module.exports = filtration;
 var _Promise = typeof Promise === 'undefined' ? __webpack_require__(/*! es6-promise */ "../../node_modules/es6-promise/dist/es6-promise.js").Promise : Promise;
 
 function forms() {
-  console.log('Подключен модуль forms');
   var message = {
-    //loading: 'Загрузка...',
     success: 'Спасибо!<br>Скоро мы с вами свяжемся.',
     failure: 'Что-то пошло не так...'
   };
   var statusMessage = document.createElement('div');
   statusMessage.classList.add('status-post');
   var buttonBottom = document.querySelector('.consultation .button-order');
-  console.log(buttonBottom);
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
@@ -1830,16 +1812,13 @@ function forms() {
       var obj = {};
       formData.forEach(function (value, key) {
         obj[key] = value;
-      }); //console.log('formData', formData);
-      //console.log('obj', obj);
-
+      });
       var json = JSON.stringify(obj);
 
-      function postData(data) {
+      function postData() {
         return new _Promise(function (resolve, reject) {
           var request = new XMLHttpRequest();
-          request.open('POST', 'server.php'); //        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
+          request.open('POST', 'server.php');
           request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
           request.addEventListener('readystatechange', function () {
             if (request.readyState < 4) {
@@ -1854,7 +1833,7 @@ function forms() {
           });
           request.send(json);
           statusMessage.style.display = 'flex';
-          buttonBottom.classList.add('no-shadow'); //request.send(formData);
+          buttonBottom.classList.add('no-shadow');
         });
       }
 
@@ -1864,7 +1843,7 @@ function forms() {
         });
       }
 
-      postData(formData).then(function () {
+      postData().then(function () {
         statusMessage.style.backgroundImage = 'url(img/loading.gif)';
         statusMessage.textContent = '';
       }).then(function () {
@@ -1875,36 +1854,50 @@ function forms() {
         statusMessage.textContent = message.failure;
       }).then(clearInput);
     });
-  } // Попап формы
-
+  }
 
   var popupForms = document.querySelectorAll('#form-design, #form-consult, #form-bottom');
-  console.log(popupForms);
   popupForms.forEach(function (elem) {
     sendForm(elem);
-  }); // Нижняя форма
-  // let form1 = document.querySelector('#form');
-  // sendForm(form1);
-  // Input telephone
-
+  });
   var inputTel = document.querySelectorAll('input[type="tel"]');
-  var inputText = document.querySelectorAll('input[type="text"], textarea');
+  var inputText = document.querySelectorAll('input[type="text"]:not([class="promocode"]), textarea');
   inputTel.forEach(function (elem) {
-    elem.addEventListener('focus', function () {
-      if (!/^\+\d*$/.test(elem.value)) elem.value = '+';
-    });
-    elem.addEventListener('keypress', function (e) {
-      if (!/\d/.test(e.key)) e.preventDefault();
-    }); // elem.addEventListener('input', () => { //keyup
-    //     elem.value = elem.value.replace(/[^+0-9]/g, '')
-    // });
+    elem.addEventListener("input", mask, false);
+    elem.addEventListener("focus", mask, false);
+    elem.addEventListener("blur", mask, false);
   });
   inputText.forEach(function (elem) {
     elem.addEventListener('input', function () {
-      //keyup
       elem.value = elem.value.replace(/[A-Z]/gi, '');
     });
   });
+
+  function setCursorPosition(pos, elem) {
+    elem.focus();
+    if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);else if (elem.createTextRange) {
+      var range = elem.createTextRange();
+      range.collapse(true);
+      range.moveEnd("character", pos);
+      range.moveStart("character", pos);
+      range.select();
+    }
+  }
+
+  function mask(event) {
+    var matrix = "+_ (___) ___ ____",
+        i = 0,
+        def = matrix.replace(/\D/g, ""),
+        val = this.value.replace(/\D/g, "");
+    if (def.length >= val.length) val = def;
+    this.value = matrix.replace(/./g, function (a) {
+      return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a;
+    });
+
+    if (event.type == "blur") {
+      if (this.value.length == 2) this.value = "";
+    } else setCursorPosition(this.value.length, this);
+  }
 }
 
 module.exports = forms;
@@ -1919,9 +1912,8 @@ module.exports = forms;
 /***/ (function(module, exports) {
 
 function mainSlider() {
-  console.log('Подключен модуль mainSlider');
   var slideIndex = 1,
-      slides = document.querySelectorAll('.main-slider-item'); // slider = document.querySelector('.main-slider');
+      slides = document.querySelectorAll('.main-slider-item');
 
   function showSlides(n) {
     if (n > slides.length) slideIndex = 1;
@@ -1932,16 +1924,13 @@ function mainSlider() {
     slides[slideIndex - 1].style.display = 'block';
   }
 
-  ;
-
   function plusSlides(n) {
     showSlides(slideIndex += n);
   }
 
-  ;
   setInterval(function () {
     plusSlides(1);
-  }, 5000); // slider.addEventListener('click', () => plusSlides(1));
+  }, 5000);
 }
 
 module.exports = mainSlider;
@@ -1956,24 +1945,20 @@ module.exports = mainSlider;
 /***/ (function(module, exports) {
 
 function pictureHover() {
-  console.log('Подключен модуль pictureHover');
-  var pictWrapper = document.querySelector('.sizes-wrapper');
-  var picSection = document.querySelector('.sizes');
-  var pictHover = document.querySelectorAll('.sizes-block');
+  var picSection = document.querySelector('.sizes'),
+      pictHover = document.querySelectorAll('.sizes-block');
 
   if (browser()) {
     pictHover.forEach(function (elem) {
-      elem.addEventListener('mouseover', function (e) {
+      elem.addEventListener('mouseover', function () {
         elem.querySelector('.back-side').style.opacity = '1';
       });
-      elem.addEventListener('mouseout', function (e) {
+      elem.addEventListener('mouseout', function () {
         elem.querySelector('.back-side').style.opacity = '0';
       });
     });
   } else {
     picSection.addEventListener('touchstart', function (e) {
-      // e.preventDefault();
-      // e.stopPropagation();
       var target = e.target;
 
       if (target.classList.contains('back-side')) {
@@ -1989,31 +1974,13 @@ function pictureHover() {
 
   function browser() {
     var ua = navigator.userAgent.toLowerCase();
-    console.log(ua); // if (window.screen.width <= 800) {
 
     if (ua.match(/android/i) || ua.match(/webos/i) || ua.match(/iphone/i) || ua.match(/ipad/i) || ua.match(/ipod/i) || ua.match(/blackberry/i) || ua.match(/windows phone/i)) {
       return 0;
     } else {
       return 1;
     }
-
-    ;
   }
-
-  ; // pictWrapper.addEventListener('mouseover', function(e) {
-  //     const target = e.target;
-  //     if (target && target.classList.contains('sizes-block')) {
-  //         const pict = target.querySelector('img');
-  //         console.log(pict.scr, 'pictUnhover');
-  //     };
-  // });
-  // pictWrapper.addEventListener('mouseout', function(e) {
-  //     const target = e.target;
-  //     if (target && target.classList.contains('sizes-block')) {
-  //         const pict = target.querySelector('img');
-  //         console.log(pict.scr, 'pictUnhover');
-  //     };
-  // });
 }
 
 module.exports = pictureHover;
@@ -2028,9 +1995,8 @@ module.exports = pictureHover;
 /***/ (function(module, exports) {
 
 function popupConsultation() {
-  console.log('Подключен модуль popupConsultation');
-  var buttonConsultation = document.querySelectorAll('.button-consultation');
-  var popConsultation = document.querySelector('.popup-consultation');
+  var buttonConsultation = document.querySelectorAll('.button-consultation'),
+      popConsultation = document.querySelector('.popup-consultation');
   buttonConsultation.forEach(function (elem) {
     elem.addEventListener('click', function () {
       popConsultation.style.display = 'block';
@@ -2042,11 +2008,13 @@ function popupConsultation() {
     if (target.classList.contains('popup-consultation') || target.classList.contains('popup-close')) {
       var statusPost = document.querySelector('.status-post');
       popConsultation.style.display = 'none';
-      statusPost.style.display = 'none';
+
+      if (statusPost) {
+        statusPost.style.display = 'none';
+      }
     }
   });
   setTimeout(function () {
-    console.log('Таймаут 60 секунд');
     var arrPopup = document.querySelectorAll('.popup-design, .popup-gift, .popup-consultation');
     var flag = true;
     arrPopup.forEach(function (elem) {
@@ -2068,9 +2036,8 @@ module.exports = popupConsultation;
 /***/ (function(module, exports) {
 
 function popupDesign() {
-  console.log('Подключен модуль popupDesign');
-  var buttonDesign = document.querySelectorAll('.button-design');
-  var popDesign = document.querySelector('.popup-design');
+  var buttonDesign = document.querySelectorAll('.button-design'),
+      popDesign = document.querySelector('.popup-design');
   buttonDesign.forEach(function (elem) {
     elem.addEventListener('click', function () {
       popDesign.style.display = 'block';
@@ -2082,7 +2049,10 @@ function popupDesign() {
     if (target.classList.contains('popup-design') || target.classList.contains('popup-close')) {
       var statusPost = document.querySelector('.status-post');
       popDesign.style.display = 'none';
-      statusPost.style.display = 'none';
+
+      if (statusPost) {
+        statusPost.style.display = 'none';
+      }
     }
   });
 }
@@ -2099,11 +2069,10 @@ module.exports = popupDesign;
 /***/ (function(module, exports) {
 
 function popupGift() {
-  console.log('Подключен модуль popupGift');
-  var buttonGift = document.querySelector('.fixed-gift');
-  var popGift = document.querySelector('.popup-gift');
-  var buttons = document.querySelectorAll('button');
-  var countClicks = 0;
+  var buttonGift = document.querySelector('.fixed-gift'),
+      popGift = document.querySelector('.popup-gift'),
+      buttons = document.querySelectorAll('button'),
+      countClicks = 0;
   buttonGift.addEventListener('click', function () {
     popGift.style.display = 'block';
     buttonGift.style.display = 'none';
@@ -2124,7 +2093,6 @@ function popupGift() {
     var elem = document.querySelector('html');
 
     if (elem.scrollHeight - elem.scrollTop == elem.clientHeight && countClicks == 0) {
-      console.log('Прокручено до конца', countClicks);
       popGift.style.display = 'block';
       buttonGift.style.display = 'none';
     }
@@ -2147,31 +2115,19 @@ __webpack_require__(/*! formdata-polyfill */ "../../node_modules/formdata-polyfi
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
-  var mainSlider = __webpack_require__(/*! ./parts/main-slider.js */ "./parts/main-slider.js");
+  var mainSlider = __webpack_require__(/*! ./parts/main-slider.js */ "./parts/main-slider.js"),
+      bottomSlider = __webpack_require__(/*! ./parts/bottom-slider.js */ "./parts/bottom-slider.js"),
+      pictureHover = __webpack_require__(/*! ./parts/picture-hover.js */ "./parts/picture-hover.js"),
+      accordion = __webpack_require__(/*! ./parts/accordion.js */ "./parts/accordion.js"),
+      calc = __webpack_require__(/*! ./parts/calc.js */ "./parts/calc.js"),
+      burger = __webpack_require__(/*! ./parts/burger.js */ "./parts/burger.js"),
+      addStyles = __webpack_require__(/*! ./parts/add-styles.js */ "./parts/add-styles.js"),
+      filtration = __webpack_require__(/*! ./parts/filtration.js */ "./parts/filtration.js"),
+      popupDesign = __webpack_require__(/*! ./parts/popup-design.js */ "./parts/popup-design.js"),
+      popupGift = __webpack_require__(/*! ./parts/popup-gift.js */ "./parts/popup-gift.js"),
+      popupConsultation = __webpack_require__(/*! ./parts/popup-consultation.js */ "./parts/popup-consultation.js"),
+      forms = __webpack_require__(/*! ./parts/forms.js */ "./parts/forms.js");
 
-  var bottomSlider = __webpack_require__(/*! ./parts/bottom-slider.js */ "./parts/bottom-slider.js");
-
-  var pictureHover = __webpack_require__(/*! ./parts/picture-hover.js */ "./parts/picture-hover.js");
-
-  var accordion = __webpack_require__(/*! ./parts/accordion.js */ "./parts/accordion.js");
-
-  var calc = __webpack_require__(/*! ./parts/calc.js */ "./parts/calc.js");
-
-  var burger = __webpack_require__(/*! ./parts/burger.js */ "./parts/burger.js");
-
-  var addStyles = __webpack_require__(/*! ./parts/add-styles.js */ "./parts/add-styles.js");
-
-  var filtration = __webpack_require__(/*! ./parts/filtration.js */ "./parts/filtration.js");
-
-  var popupDesign = __webpack_require__(/*! ./parts/popup-design.js */ "./parts/popup-design.js");
-
-  var popupGift = __webpack_require__(/*! ./parts/popup-gift.js */ "./parts/popup-gift.js");
-
-  var popupConsultation = __webpack_require__(/*! ./parts/popup-consultation.js */ "./parts/popup-consultation.js");
-
-  var forms = __webpack_require__(/*! ./parts/forms.js */ "./parts/forms.js");
-
-  popupConsultation;
   mainSlider();
   bottomSlider();
   pictureHover();

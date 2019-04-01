@@ -936,15 +936,9 @@ h4 {
   right: 5%;
 }
 .often-questions .spirt {
-  /* position: absolute;
-  top: -25rem;
-  left: 0; */
-  /* margin-top: 0;
-  margin-bottom: 0; */
   background-color: transparent;
   padding: 0 4rem;
   opacity: 0;
-  /* padding: 0; */
   height: 0 !important;
 }
 .promo-3 {

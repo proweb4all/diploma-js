@@ -1,22 +1,21 @@
 require('formdata-polyfill');
 
 window.addEventListener('DOMContentLoaded', () => {
-
     'use strict';
-    let mainSlider = require('./parts/main-slider.js');
-    let bottomSlider = require('./parts/bottom-slider.js');
-    let pictureHover = require('./parts/picture-hover.js');
-    let accordion = require('./parts/accordion.js');
-    let calc = require('./parts/calc.js');
-    let burger = require('./parts/burger.js');
-    let addStyles = require('./parts/add-styles.js');
-    let filtration = require('./parts/filtration.js');
-    let popupDesign = require('./parts/popup-design.js');
-    let popupGift = require('./parts/popup-gift.js');
-    let popupConsultation = require('./parts/popup-consultation.js');
-    let forms = require('./parts/forms.js');
+
+    let mainSlider = require('./parts/main-slider.js'),
+        bottomSlider = require('./parts/bottom-slider.js'),
+        pictureHover = require('./parts/picture-hover.js'),
+        accordion = require('./parts/accordion.js'),
+        calc = require('./parts/calc.js'),
+        burger = require('./parts/burger.js'),
+        addStyles = require('./parts/add-styles.js'),
+        filtration = require('./parts/filtration.js'),
+        popupDesign = require('./parts/popup-design.js'),
+        popupGift = require('./parts/popup-gift.js'),
+        popupConsultation = require('./parts/popup-consultation.js'),
+        forms = require('./parts/forms.js');
     
-    popupConsultation
     mainSlider();
     bottomSlider();
     pictureHover();
@@ -35,7 +34,7 @@ if ('NodeList' in window && !NodeList.prototype.forEach) {
     console.info('polyfill for IE11');
     NodeList.prototype.forEach = function (callback, thisArg) {
         thisArg = thisArg || window;
-        for (var i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.length; i++) {
             callback.call(thisArg, this[i], i, this);
         }
     };

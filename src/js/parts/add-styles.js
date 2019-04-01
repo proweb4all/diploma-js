@@ -1,5 +1,4 @@
 function addStyles(){
-    console.log('Подключен модуль addStyles');
     
     let buttonAS = document.querySelector('.styles .button-transparent'),
         styles2 = document.querySelectorAll('.styles-2');

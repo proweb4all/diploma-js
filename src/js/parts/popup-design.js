@@ -1,8 +1,7 @@
 function popupDesign(){
-    console.log('Подключен модуль popupDesign');
     
-    let buttonDesign = document.querySelectorAll('.button-design');
-    let popDesign = document.querySelector('.popup-design');
+    let buttonDesign = document.querySelectorAll('.button-design'),
+        popDesign = document.querySelector('.popup-design');
 
     buttonDesign.forEach((elem) => {
         elem.addEventListener('click', () => {
@@ -14,7 +13,7 @@ function popupDesign(){
         if (target.classList.contains('popup-design') || target.classList.contains('popup-close')) {
             let statusPost = document.querySelector('.status-post');
             popDesign.style.display = 'none';
-            statusPost.style.display = 'none';
+            if (statusPost) {statusPost.style.display = 'none'}
         }
     });
 

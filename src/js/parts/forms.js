@@ -1,8 +1,6 @@
 function forms(){
-    console.log('Подключен модуль forms')
 
     let message = {
-        //loading: 'Загрузка...',
         success: 'Спасибо!<br>Скоро мы с вами свяжемся.',
         failure: 'Что-то пошло не так...'
     };
@@ -10,10 +8,9 @@ function forms(){
     statusMessage.classList.add('status-post');
     
     let buttonBottom = document.querySelector('.consultation .button-order');
-    console.log(buttonBottom);
 
     function sendForm(elem) {
-        elem.addEventListener('submit', function(event){
+        elem.addEventListener('submit', (event) => {
             event.preventDefault();
             if (!elem.querySelector('.status-post')) {
                 elem.appendChild(statusMessage);
@@ -28,17 +25,14 @@ function forms(){
             formData.forEach((value, key) => {
                 obj[key] = value;
             });
-            //console.log('formData', formData);
-            //console.log('obj', obj);
             let json = JSON.stringify(obj);
 
-            function postData(data){
-                return new Promise(function(resolve, reject){
+            function postData(){
+                return new Promise((resolve, reject) => {
                     let request = new XMLHttpRequest();
                     request.open('POST', 'server.php');
-            //        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                    request.addEventListener('readystatechange', function(){
+                    request.addEventListener('readystatechange', () => {
                         if (request.readyState < 4){
                             resolve()
                         } else if (request.readyState === 4){
@@ -52,13 +46,12 @@ function forms(){
                     request.send(json);
                     statusMessage.style.display = 'flex';
                     buttonBottom.classList.add('no-shadow');
-                    //request.send(formData);
                 })
             }
             function clearInput(){
                 input.forEach((elem) => {elem.value = ''})
             }
-            postData(formData)
+            postData()
                 .then(() => {
                     statusMessage.style.backgroundImage = 'url(img/loading.gif)';
                     statusMessage.textContent = '';
@@ -74,32 +67,45 @@ function forms(){
                 .then(clearInput)
         });
     }
-    // Попап формы
     let popupForms = document.querySelectorAll('#form-design, #form-consult, #form-bottom');
-    console.log(popupForms);
-    popupForms.forEach((elem) => {sendForm(elem)})
-    // Нижняя форма
-    // let form1 = document.querySelector('#form');
-    // sendForm(form1);
+    popupForms.forEach((elem) => {sendForm(elem)});
 
-    // Input telephone
     let inputTel = document.querySelectorAll('input[type="tel"]');
-    let inputText = document.querySelectorAll('input[type="text"], textarea');
-    
+    let inputText = document.querySelectorAll('input[type="text"]:not([class="promocode"]), textarea');
     inputTel.forEach((elem) => {
-        elem.addEventListener('focus', () => {if(!/^\+\d*$/.test(elem.value)) elem.value = '+';});
-        elem.addEventListener('keypress', e => {if(!/\d/.test(e.key)) e.preventDefault();});
-        // elem.addEventListener('input', () => { //keyup
-        //     elem.value = elem.value.replace(/[^+0-9]/g, '')
-        // });
+        elem.addEventListener("input", mask, false);
+        elem.addEventListener("focus", mask, false);
+        elem.addEventListener("blur", mask, false);
     });
     inputText.forEach((elem) => {
-        elem.addEventListener('input', () => { //keyup
-            elem.value = elem.value.replace(/[A-Z]/gi, '')
+        elem.addEventListener('input', () => {
+            elem.value = elem.value.replace(/[A-Z]/gi, '');
         });
     });
-
-
+    function setCursorPosition(pos, elem) {
+        elem.focus();
+        if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
+        else if (elem.createTextRange) {
+            let range = elem.createTextRange();
+            range.collapse(true);
+            range.moveEnd("character", pos);
+            range.moveStart("character", pos);
+            range.select();
+        }
+    }
+    function mask(event) {
+        let matrix = "+_ (___) ___ ____",
+            i = 0,
+            def = matrix.replace(/\D/g, ""),
+            val = this.value.replace(/\D/g, "");
+        if (def.length >= val.length) val = def;
+        this.value = matrix.replace(/./g, function(a) {
+            return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
+        });
+        if (event.type == "blur") {
+            if (this.value.length == 2) this.value = "";
+        } else setCursorPosition(this.value.length, this);
+    }
 
 }
 

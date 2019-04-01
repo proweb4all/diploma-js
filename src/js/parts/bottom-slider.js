@@ -1,12 +1,11 @@
 function bottomSlider(){
-    console.log('Подключен модуль bottomSlider');
     
     let slideIndex = 1,
         slides = document.querySelectorAll('.feedback-slider-item'),
         prev = document.querySelector('.main-prev-btn'),
         next = document.querySelector('.main-next-btn');
-        let timerId = setInterval(() => {plusSlides(1)}, 7000);
-    //showSlides(slideIndex, 0);
+    let timerId = setInterval(() => {plusSlides(1)}, 7000);
+
     function showSlides(n, d){
         if (n > slides.length) slideIndex = 1;
         if (n < 1) slideIndex = slides.length;

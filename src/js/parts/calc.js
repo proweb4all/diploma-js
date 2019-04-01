@@ -1,25 +1,21 @@
 function calc(){
-    console.log('Подключен модуль calc');
 
     let inputCalc = document.querySelectorAll('.form select, .promocode'),
         inputPromo = document.querySelector('.promocode'),
         totalValue = document.querySelector('.calc-price');
-    let totalDefault = totalValue.textContent;
-    let promoDiscount = .3;
-    let promoCode = 'IWANTPOPART';
+    let totalDefault = totalValue.textContent,
+        promoDiscount = .3,
+        promoCode = 'IWANTPOPART';
+
     inputCalc.forEach((elem) => {
         elem.addEventListener('change', () => {
-            // console.log('inputCalc[0]', inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price'));
-            // console.log('inputCalc[1]', inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price'));
-            // console.log('inputCalc[2]', inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price'));
-            let price0 = +inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price');
-            let price1 = +inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price');
-            let price2 = +inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price');
+            let price0 = +inputCalc[0].options[inputCalc[0].selectedIndex].getAttribute('data-price'),
+                price1 = +inputCalc[1].options[inputCalc[1].selectedIndex].getAttribute('data-price'),
+                price2 = +inputCalc[2].options[inputCalc[2].selectedIndex].getAttribute('data-price');
 
             if ((price0 <= 0) || (price1 <= 0)) {
                 totalValue.style.fontSize = '14px';
                 totalValue.textContent = totalDefault;
-
             } else {
                 let res = price0 * price1 + price2;
                 if (inputPromo.value.trim().toUpperCase() == promoCode) {
@@ -27,10 +23,9 @@ function calc(){
                 }
                 totalValue.style.fontSize = '40px';
                 animNum(totalValue, Math.round(res), 50, 1000);
-                //totalValue.textContent = Math.round(res);
-            };
-        })
-    })
+            }
+        });
+    });
 
     // Анимация числа
     function animNum(elem, n, f, t){
@@ -44,7 +39,7 @@ function calc(){
             cNum += d0;
             elem.textContent = Math.round(cNum);
             steps--;
-            if(steps <= 0){
+            if (steps <= 0) {
                 clearInterval(timer);
             }
         }, (1000 / fps));

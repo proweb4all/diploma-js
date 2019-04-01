@@ -1,5 +1,4 @@
 function burger(){
-    console.log('Подключен модуль burger');
     
     let burger = document.querySelector('.burger'),
         burgerMenu = document.querySelector('.burger-menu');
