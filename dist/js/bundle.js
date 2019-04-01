@@ -1809,6 +1809,8 @@ function forms() {
   };
   var statusMessage = document.createElement('div');
   statusMessage.classList.add('status-post');
+  var buttonBottom = document.querySelector('.consultation .button-order');
+  console.log(buttonBottom);
 
   function sendForm(elem) {
     elem.addEventListener('submit', function (event) {
@@ -1816,6 +1818,10 @@ function forms() {
 
       if (!elem.querySelector('.status-post')) {
         elem.appendChild(statusMessage);
+        elem.querySelector('.status-post').addEventListener('click', function () {
+          this.style.display = 'none';
+          buttonBottom.classList.remove('no-shadow');
+        });
       }
 
       ;
@@ -1847,7 +1853,8 @@ function forms() {
             }
           });
           request.send(json);
-          statusMessage.style.display = 'flex'; //request.send(formData);
+          statusMessage.style.display = 'flex';
+          buttonBottom.classList.add('no-shadow'); //request.send(formData);
         });
       }
 

@@ -8,11 +8,20 @@ function forms(){
     };
     let statusMessage = document.createElement('div');
     statusMessage.classList.add('status-post');
+    
+    let buttonBottom = document.querySelector('.consultation .button-order');
+    console.log(buttonBottom);
 
     function sendForm(elem) {
         elem.addEventListener('submit', function(event){
             event.preventDefault();
-            if (!elem.querySelector('.status-post')) {elem.appendChild(statusMessage)};
+            if (!elem.querySelector('.status-post')) {
+                elem.appendChild(statusMessage);
+                elem.querySelector('.status-post').addEventListener('click', function() { 
+                    this.style.display = 'none';
+                    buttonBottom.classList.remove('no-shadow');
+                });
+            };
             let input = elem.querySelectorAll('input, textarea'),
                 formData = new FormData(elem);
             let obj = {};
@@ -42,6 +51,7 @@ function forms(){
                     });
                     request.send(json);
                     statusMessage.style.display = 'flex';
+                    buttonBottom.classList.add('no-shadow');
                     //request.send(formData);
                 })
             }

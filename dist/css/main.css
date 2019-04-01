@@ -1888,7 +1888,11 @@ h4 {
   background: #ededed no-repeat center center;
   border-radius: 4px;
   padding: 15px;
+  cursor: pointer;
 }
 #form-bottom{
   position: relative;
+}
+.no-shadow {
+  box-shadow: none !important;
 }
